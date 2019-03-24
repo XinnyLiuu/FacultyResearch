@@ -1,0 +1,21 @@
+<h2>All Equipments</h2>
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+            {{#each equipment_data.fields}}
+                <td>{{this}}</td>
+            {{/each}}
+        </thead>
+        <tbody>
+            {{#each equipment_data.values}}
+                <tr>
+                    {{#each this}}
+                        <td>
+                            {{this}}
+                        </td>
+                    {{/each}}
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
