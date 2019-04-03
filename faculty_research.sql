@@ -60,8 +60,25 @@ CREATE TABLE student(
 --
 
 -- Fields: FacultyID, DepartmentID, FirstName, LastName,Email,Interest,OfficeBuilding,OfficePhoneNumber,OfficeRoomNumber
-INSERT INTO faculty VALUES();
+-- CS - 21
+INSERT INTO faculty VALUES(11, 21, "Reynold", "Bailey", "rjb@cs.rit.edu", "CS", "Golisano", "585-475-6181", "GOL-3005");
+INSERT INTO faculty VALUES(12, 21, "Ivona", "Bezakova", "ib@cs.rit.edu", "CS", "Golisano", "585-475-4526", "GOL-3645");
 
+-- CSEC - 22
+INSERT INTO faculty VALUES(13, 22, "Giovani", "Abuaitah", "graics@rit.edu", "CSEC", "Golisano", "585-475-4316", "GOL-2321");
+INSERT INTO faculty VALUES(14, 22, "Hrishikesh", "Archarya", "hbaics@rit.edu", "CSEC", "Golisano", "585-475-2801", "GOL-2647");
+
+-- IST - 23
+INSERT INTO faculty VALUES(15, 23, "Dan", "Bogaard", "dsbics@rit.edu", "ISTE", "Golisano", "585-475-5231", "GOL-2111");
+INSERT INTO faculty VALUES(16, 23, "Michael", "Floeser", "Michael.Floeser@rit.edu", "ISTE", "Golisano", "585-475-7031", "GOL-2669");
+
+-- IGM - 24
+INSERT INTO faculty VALUES(17, 24, "David", "Schwartz", "disvks@rit.edu", "IGM", "Golisano", "585-475-5521", "GOL-2157");
+INSERT INTO faculty VALUES(18, 24, "Jessica", "Bayliss", "jdbics@rit.edu", "IGM", "Golisano", "585-475-2507", "GOL-2153");
+
+-- SE - 25
+INSERT INTO faculty VALUES(19, 25, "Travis", "Desell", "tjdvse@rit.edu", "SE", "Golisano", NULL, "GOL-1559");
+INSERT INTO faculty VALUES(110, 25, "Scott", "Hawker", "hawker@mail.rit.edu", "SE", "Golisano", "585-475-2705", "GOL-1696");	
 
 
 
