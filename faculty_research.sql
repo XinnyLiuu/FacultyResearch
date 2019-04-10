@@ -80,8 +80,16 @@ INSERT INTO department VALUES();
 --
 
 -- Fields: ProjectID, FacultyID, ProjectName, ProjectDescription, Budget, StartDate, EndDate
-INSERT INTO project VALUES();
-
+INSERT INTO project VALUES(41, 11, 'Lookup or Learn: A Grounded Theory Approach to the Student-Task', 'Proceedings of the 9th International Conference on Education and Information Systems, Technologies and Applications', '2018-08-27','2018-12-11');
+INSERT INTO project VALUES(42, 12, 'Progress on Website Accessibility?' , 'ACM Transactions on the Web','2017-08-22','2017-12-08');
+INSERT INTO project VALUES(43, 13, 'Accessibility Support with the ACCESS Framework', 'International Journal of Human Computer Interaction','2017-01-22','2017-05-08');
+INSERT INTO project VALUES(44,14,'Digital Motherhood: How Does Technology Support New Mothers?', 'Proceedings of the ACM SIGCHI Conference on Human Factors in Computing Systems','2017-01-27','2017-08-08');
+INSERT INTO project VALUES(45,15,'A Protocol for Software-Supported Interaction with Broadcast Debates','Proceedings of the Open Digital, Fourth Annual Digital Economy All Hands Conference','2016-01-23','2016-05-10');
+INSERT INTO project VALUES(46,16,'Older Adults and Social Networking Sites: Developing Recommendations for Inclusive Design','Proceedings of the Open Digital, Fourth Annual Digital Economy All Hands Conference','2016-08-30','2016-12-14');
+INSERT INTO project VALUES(47,17,'Implementation and Evaluation of Animation Controls Sufficient for Conveying ASL Facial Expressions','Proceedings of the 15th International ACM SIGACCESS Conference on Computers and Accessibility','2017-02-01','2017-05-15');
+INSERT INTO project VALUES(48,18,'Release of Experimental Stimuli and Questions for Evaluating Facial Expressions in Animations of American Sign Language',' Proceedings of the 6th Workshop on the Representation and Processing of Sign Languages: Beyond the Manual Channel, The 9th International Conference on Language Resources and Evaluation','2018-08-31','2018-12-02');
+INSERT INTO project VALUES(49,19, 'Using a Low-Cost Open Source Hardware Development Platform in Teaching Young Students Programming Skills','Proceedings of the SIGITE','2017-01-31','2017-05-04');
+INSERT INTO project VALUES(410,110,'Teaching Android Malware Behaviors for Android Platform Using Interactive Labs','Proceedings of the ASIA 2013','2017-08-25','2017-12-13');
 
 
 
