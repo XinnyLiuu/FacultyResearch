@@ -5,7 +5,6 @@ const moment = require('moment');
 /**
  * Acts as the data layer that connects to MySQL
  */
-
 module.exports = {
     connect,
     close,
@@ -63,18 +62,13 @@ function close() {
 function select(sql) {
     const data = []; // Array holding all row information to be returned from this function
     
-
     return new Promise((resolve, reject) => {
         connection.query( sql )
         .on('error', (err) => {
             return reject(err);
         })
         .on('result', (row) => {
-            // // Print each field and value in each row
-            // for(let field in row) {
-            //     console.log( field + " " + row[field] ); 
-            // }
-            
+            // 
             data.push( row );
             resolve( data );
         });

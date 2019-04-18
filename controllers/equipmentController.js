@@ -1,4 +1,6 @@
+'use strict';
 const db = require('../db/mysql');
+
 /**
  * Controller for all equipment related data and views
  */

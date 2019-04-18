@@ -7,6 +7,10 @@ const morgan = require('morgan');
 const http = require('http');
 const path = require('path');
 
+/**
+ * Web server configurations
+ */
+
 // Controllers (route handlers)
 const equipmentController = require("./controllers/equipmentController");
 
