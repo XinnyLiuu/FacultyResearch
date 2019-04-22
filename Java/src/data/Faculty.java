@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Faculty {
 	// Fields
 	private String id;
-	private String departmentid;
+	private String departmentId;
 	private String fName;
 	private String lName;
 	private String email;
@@ -25,12 +25,24 @@ public class Faculty {
 		this.id = id;
 	}
 
+	public Faculty(String id, String departmentId, String fName, String lName, String email, String interest, String officeBuilding, String officePhoneNumber, String officeRoomNumber) {
+		this.id = id;
+		this.departmentId = departmentId;
+		this.fName = fName;
+		this.lName = lName;
+		this.email = email;
+		this.interest = interest;
+		this.officeBuilding = officeBuilding;
+		this.officePhoneNumber = officePhoneNumber;
+		this.officeRoomNumber = officeRoomNumber;
+	}
+
 	/**
 	 * Retrieve the values from the db using the faculty's id and update other attributes
 	 *
 	 * @returns size of the data fetched
 	 */
-	public int fetch() throws DLException {
+	public int get() throws DLException {
 		// Connect to Mysql
 		mysql.connect();
 
@@ -47,7 +59,7 @@ public class Faculty {
 		// Iterate through queryData and set the object's attributes
 		if(queryData.size() > 0) {
 			// Get the second row as the first row will be the column names
-			this.departmentid = queryData.get(1).get(0);
+			this.departmentId = queryData.get(1).get(0);
 			this.fName = queryData.get(1).get(1);
 			this.lName = queryData.get(1).get(2);
 			this.email = queryData.get(1).get(3);
@@ -62,13 +74,98 @@ public class Faculty {
 		return queryData.size();
 	}
 
+	/**
+	 * Update the attributes in the db
+	 *
+	 * @returns num of rows affected
+	 */
+	public int put() throws DLException {
+		// Connect to Mysql
+		mysql.connect();
+
+		// Create query
+		String query = "update faculty set departmentId = ?, firstname = ?, lastname = ?, email = ?, interest = ?, officebuilding = ?, officephonenumber = ?, officeroomnumber where facultyid = ?";
+
+		// Add properties to values ArrayList
+		ArrayList<String> values = new ArrayList<>();
+		values.add(this.getDepartmentId());
+		values.add(this.getfName());
+		values.add(this.getlName());
+		values.add(this.getEmail());
+		values.add(this.getInterest());
+		values.add(this.getOfficeBuilding());
+		values.add(this.getOfficePhoneNumber());
+		values.add(this.getOfficeRoomNumber());
+		values.add(this.getId());
+
+		int modified = mysql.setData(query, values);
+
+		// Close mysql
+		mysql.close();
+		return modified;
+	}
+
+	/**
+	 * Insert the attributes in the db
+	 *
+	 * @returns num of rows affected
+	 */
+	public int post() throws DLException {
+		// Connect to Mysql
+		mysql.connect();
+
+		// Create query
+		String query = "insert into faculty values(?, ?, ?, ?, ?, ?, ?, ?, ?);";
+
+		// Add properties to values ArrayList
+		ArrayList<String> values = new ArrayList<>();
+		values.add(this.getId());
+		values.add(this.getDepartmentId());
+		values.add(this.getfName());
+		values.add(this.getlName());
+		values.add(this.getEmail());
+		values.add(this.getInterest());
+		values.add(this.getOfficeBuilding());
+		values.add(this.getOfficePhoneNumber());
+		values.add(this.getOfficeRoomNumber());
+
+		int modified = mysql.setData(query, values);
+
+		// Close mysql
+		mysql.close();
+		return modified;
+	}
+
+	/**
+	 * Delete method to delete a record in the database
+	 *
+	 * @returns num of rows deleted
+	 */
+	public int delete() throws DLException {
+		// Connect to Mysql
+		mysql.connect();
+
+		// Connect to Mysql
+		String query = "delete from faculty where facultyId = ?;";
+
+		// Add properties to values ArrayList
+		ArrayList<String> values = new ArrayList<>();
+		values.add(this.getId());
+
+		int modified = mysql.setData(query, values);
+
+		// Close mysql
+		mysql.close();
+		return modified;
+	}
+
 	// Getters
 	public String getId() {
 		return id;
 	}
 
-	public String getDepartmentid() {
-		return departmentid;
+	public String getDepartmentId() {
+		return departmentId;
 	}
 
 	public String getfName() {
