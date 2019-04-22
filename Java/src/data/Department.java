@@ -18,7 +18,13 @@ public class Department {
 	public Department(String id) {
 		this.id = id;
 	}
-
+   
+   public Department(String id, String name, String officeNum){
+      this.id = id;
+      this.name = name;
+      this.officeRoomNumber = officeNum;
+   }
+   
 	/**
 	 * Retrieve the values from the db using the department's id and update other attributes
 	 *
@@ -48,6 +54,82 @@ public class Department {
 		// Close mysql
 		mysql.close();
 		return queryData.size();
+	}
+
+	/**
+	 * Update the department in the db using the department's id as a selector
+	 *
+	 * @returns number of rows update
+	 */
+	public int put() throws DLException{
+		//connect to tMySQL
+		mysql.connect();
+
+		//set up query string
+		String query = "Update department set DepartmentName = ?, OfficeRoomNumber = ? where DepartmentID = ?;";
+
+		//add values to the ArrayList
+		ArrayList<String> values = new ArrayList<>();
+		values.add(name);
+		values.add(officeRoomNumber);
+		values.add(id);
+
+		//Update the department
+		int rowsChanged = mysql.setData(query, values);
+
+		//close the connection
+		mysql.close();
+		return rowsChanged;
+	}
+
+	/**
+	 * Insert the new department in the db using the department's id as a selector
+	 *
+	 * @returns number of rows updated
+	 */
+	public int post() throws DLException{
+		//Connect to MySQL
+		mysql.connect();
+
+		//Create query
+		String query = "Insert into department VALUES(?,?,?);";
+
+		//Add properties to values ArrayList
+		ArrayList<String> values = new ArrayList<>();
+		values.add(id);
+		values.add(name);
+		values.add(officeRoomNumber);
+
+		//Insert the new department
+		int rowsChanged = mysql.setData(query,values);
+
+		//close the connection
+		mysql.close();
+		return rowsChanged;
+	}
+
+	/**
+	 * Delete the department in the db using the department's id as a selector
+	 *
+	 * @returns number of rows changed
+	 */
+	public int delete() throws DLException{
+		//connect to MySQL
+		mysql.connect();
+
+		//set up query string
+		String query = "Delete from department where DepartmentID = ?;";
+
+		//add values to ArrayList
+		ArrayList<String> values = new ArrayList<>();
+		values.add(id);
+
+		// delete the department form the db
+		int rowsChanged = mysql.setData(query,values);
+
+		//close the connection
+		mysql.close();
+		return rowsChanged;
 	}
 
 	// Getters

@@ -22,6 +22,19 @@ public class Project {
 	public Project(String id) {
 		this.id = id;
 	}
+   
+   //Constructor
+   public Project(String id, String facultyId, String name, String desc, String budget, String startDate, String endDate){
+      this.id = id;
+      this.facultyId = facultyId;
+      this.name = name;
+      this.desc = desc;
+      this.budget = budget;
+      this.startDate = startDate;
+      this.endDate = endDate;
+      
+      }
+      
 
 	/**
 	 * Retrieve the values from the db using the project's id and update other attributes
@@ -58,6 +71,89 @@ public class Project {
 		return queryData.size();
 	}
 
+   /**
+	 * Update the attributes in the db
+	 *
+	 * @returns num of rows affected
+	 */
+	public int put() throws DLException {
+		// Connect to Mysql
+		mysql.connect();
+      
+       //Create query string
+		String query = "UPDATE project SET FacultyID = ?, ProjectName = ?,  ProjectDescription = ?, Budget = ?, StartDate = ?, EndDate = ? WHERE ProjectID = ?;";
+
+      
+      //Arraylist to insert data
+      ArrayList<String> values = new ArrayList<>();
+   		values.add(this.getFacultyId());
+   		values.add(this.getName());
+   		values.add(this.getDesc());
+         values.add(this.getBudget());
+         values.add(this.getStartDate());
+         values.add(this.getEndDate());
+         values.add(this.getId());
+         
+     		int num = mysql.setData(query, values);
+      
+      // Close mysql
+      mysql.close();
+      return num;
+      
+      }
+   
+      /**
+	 * Insert the attributes in the db
+	 *
+	 * @returns num of rows affected
+	 */
+	public int post() throws DLException {
+      // Connect to Mysql
+		mysql.connect();
+
+         
+      //Create query string
+      String query = "INSERT INTO project VALUES(?,?,?,?,?,?,?);"; 
+      
+            
+      //Arraylist to insert data
+      ArrayList<String> values = new ArrayList<>();
+   		values.add(this.getId());
+   		values.add(this.getFacultyId());
+   		values.add(this.getName());
+   		values.add(this.getDesc());
+         values.add(this.getBudget());
+         values.add(this.getStartDate());
+         values.add(this.getEndDate());
+        
+   		int num = mysql.setData(query, values);
+         
+         // Close mysql
+         mysql.close();
+         return num;
+      }
+      
+    /**
+	 * Delete method to erase a record in the database
+	 *
+	 * @returns num of rows deleted
+	 */
+	public int delete() throws DLException {  
+       // Connect to Mysql
+		mysql.connect();
+      
+      //Arraylist to delete data
+      ArrayList<String> values = new ArrayList<>();
+		   values.add(this.getId());
+   		String query = "DELETE FROM project WHERE ProjectID = ?;";
+   		int num = mysql.setData(query, values);
+         
+         // Close mysql
+         mysql.close();
+         return num;
+      
+
+      }
 	// Getters
 	public String getId() {
 		return id;
