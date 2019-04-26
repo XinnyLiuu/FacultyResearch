@@ -14,6 +14,7 @@ public class Student {
 	private String email;
 	private String year;
 	private String major;
+	private String password;
 
 	// MySQL
 	MySQLDatabase mysql = new MySQLDatabase();
@@ -23,6 +24,11 @@ public class Student {
 
 	public Student(String id) {
 		this.id = id;
+	}
+
+	public Student(String id, String password) {
+		this.id = id;
+		this.password = password;
 	}
 
 	public Student(String id, String departmentId, String fName, String lName, String email, String year, String major) {
@@ -152,6 +158,38 @@ public class Student {
 	}
 
 	/**
+	 * Checks the student's id and password against the ones in the database
+	 *
+	 * @return
+	 * @throws DLException
+	 */
+	public int login() throws DLException {
+		// Open mysql
+		mysql.connect();
+
+		// Create query
+		String query = "select * from student where password = sha2(?, 256) and studentid = ?";
+
+		// Prepare values
+		ArrayList<String> values = new ArrayList<>();
+		values.add(this.getPassword());
+		values.add(this.getId());
+
+		ArrayList<ArrayList<String>> data = mysql.getData( query, values );
+		data.remove(0); // Remove column names
+
+		// On student data found, set the student's values and return the number
+		if(data.size() == 1) {
+			get();
+			return data.size();
+		}
+
+		// Close mysql
+		mysql.close();
+		return 0;
+	}
+
+	/**
 	 * Gets all the student's projects
 	 *
 	 * @return arraylist of all projects with faculty name associated with the student
@@ -161,7 +199,7 @@ public class Student {
 		mysql.connect();
 
 		// Create query
-		String query = "select distinct p.projectid, p.projectname, f.lastname, p.projectdescription, p.budget, p.startdate, p.enddate from project p join faculty f on p.studentid = ?";
+		String query = "select p.projectid, p.projectname, f.lastname, p.projectdescription, p.budget, p.startdate, p.enddate from project p join faculty f on p.studentid = ?";
 
 		// Prepare values
 		ArrayList<String> values = new ArrayList<>();
@@ -227,4 +265,6 @@ public class Student {
 	public String getMajor() {
 		return major;
 	}
+
+	public String getPassword() { return password; }
 }

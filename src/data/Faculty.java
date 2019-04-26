@@ -16,6 +16,7 @@ public class Faculty {
 	private String officeBuilding;
 	private String officePhoneNumber;
 	private String officeRoomNumber;
+	private String password;
 
 	// MySQL
 	MySQLDatabase mysql = new MySQLDatabase();
@@ -25,6 +26,11 @@ public class Faculty {
 
 	public Faculty(String id) {
 		this.id = id;
+	}
+
+	public Faculty(String id, String password) {
+		this.id = id;
+		this.password = password;
 	}
 
 	public Faculty(String id, String departmentId, String fName, String lName, String email, String interest, String officeBuilding, String officePhoneNumber, String officeRoomNumber) {
@@ -162,6 +168,38 @@ public class Faculty {
 	}
 
 	/**
+	 * Checks the faculty's id and password against the ones in the database
+	 *
+	 * @return
+	 * @throws DLException
+	 */
+	public int login() throws DLException {
+		// Open mysql
+		mysql.connect();
+
+		// Create query
+		String query = "select * from faculty where password = sha2(?, 256) and facultyid = ?";
+
+		// Prepare values
+		ArrayList<String> values = new ArrayList<>();
+		values.add(this.getPassword());
+		values.add(this.getId());
+
+		ArrayList<ArrayList<String>> data = mysql.getData( query, values );
+		data.remove(0); // Remove column names
+
+		// On faculty data found, set the faculty's values and return the number
+		if(data.size() == 1) {
+			get();
+			return data.size();
+		}
+
+		// Close mysql
+		mysql.close();
+		return 0;
+	}
+
+	/**
 	 * Gets all the faculty's projects
 	 *
 	 * @return arraylist of all projects associated with the faculty
@@ -221,4 +259,6 @@ public class Faculty {
 	public String getOfficeRoomNumber() {
 		return officeRoomNumber;
 	}
+
+	public String getPassword() { return password; }
 }

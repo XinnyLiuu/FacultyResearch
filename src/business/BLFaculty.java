@@ -12,13 +12,17 @@ public class BLFaculty extends Faculty {
 		super(id);
 	}
 
+	public BLFaculty(String id, String password) {
+		super(id, password);
+	}
+
 	/**
 	 * Check if the user exists
 	 *
 	 * @return true / false
 	 */
-	public boolean login() throws DLException {
-		if(get() > 1) {
+	public boolean doLogin() throws DLException {
+		if(login() == 1) {
 			return true;
 		}
 

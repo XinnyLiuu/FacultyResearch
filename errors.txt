@@ -219,3 +219,26 @@ com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method)
 com.sun.glass.ui.gtk.GtkApplication.lambda$null$10(GtkApplication.java:245)
 java.lang.Thread.run(Thread.java:748)
 
+2019-04-26 16:11:20 Could not execute PreparedStatement query
+Attempted query: select * from faculty where password = sha2(?, 256) and faculty = ?
+numFields: 0
+java.sql.SQLSyntaxErrorException: Unknown column 'faculty' in 'where clause'
+com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:970)
+com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:387)
+data.MySQLDatabase.getData(MySQLDatabase.java:198)
+data.Faculty.login(Faculty.java:188)
+business.BLFaculty.doLogin(BLFaculty.java:25)
+FacultyResearch.start(FacultyResearch.java:159)
+com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$8(LauncherImpl.java:863)
+com.sun.javafx.application.PlatformImpl.lambda$runAndWait$7(PlatformImpl.java:326)
+com.sun.javafx.application.PlatformImpl.lambda$null$5(PlatformImpl.java:295)
+java.security.AccessController.doPrivileged(Native Method)
+com.sun.javafx.application.PlatformImpl.lambda$runLater$6(PlatformImpl.java:294)
+com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
+com.sun.glass.ui.gtk.GtkApplication._runLoop(Native Method)
+com.sun.glass.ui.gtk.GtkApplication.lambda$null$10(GtkApplication.java:245)
+java.lang.Thread.run(Thread.java:748)
+

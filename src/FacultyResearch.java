@@ -5,6 +5,7 @@ import data.*;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -13,6 +14,7 @@ import javafx.application.Application;
 import javafx.scene.*;
 import javafx.scene.layout.*;
 import javafx.stage.*;
+import javafx.util.Pair;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -74,9 +76,9 @@ public class FacultyResearch extends Application {
 
 		// STUDENT USERS
 		else if (user.equals("student")) {
-			// Show username login
-			String userId = userAuthenticate();
-			if(userId.equals("")) {
+			// Show username login and get credentials
+			String[] creds = userAuthenticate();
+			if(creds == null || creds.length != 2) {
 				// If userId empty, its an error
 				Alert alert = new Alert(Alert.AlertType.ERROR, "Please try again!");
 				alert.showAndWait();
@@ -84,10 +86,12 @@ public class FacultyResearch extends Application {
 			}
 
 			// Get Student
-			BLStudent student = new BLStudent( userId );
+			String userId = creds[0];
+			String password = creds[1];
+			BLStudent student = new BLStudent( userId, password );
 
 			try {
-				if(student.login()) {
+				if(student.doLogin()) {
 					// Setup welcome
 					Label welcome = new Label(String.format("Welcome, %s %s!", student.getfName(), student.getlName()));
 					welcome.setFont( new Font(25) );
@@ -137,9 +141,9 @@ public class FacultyResearch extends Application {
 
 		// FACULTY USERS
 		else if (user.equals("faculty")) {
-			// Show username login
-			String userId = userAuthenticate();
-			if(userId.equals("")) {
+			// Show username login and get credentials
+			String[] creds = userAuthenticate();
+			if(creds == null || creds.length != 2) {
 				// If userId empty, its an error
 				Alert alert = new Alert(Alert.AlertType.ERROR, "Please try again!");
 				alert.showAndWait();
@@ -147,10 +151,12 @@ public class FacultyResearch extends Application {
 			}
 
 			// Get Faculty
-			BLFaculty faculty = new BLFaculty( userId );
+			String userId = creds[0];
+			String password = creds[1];
+			BLFaculty faculty = new BLFaculty( userId, password );
 
 			try {
-				if(faculty.login()) {
+				if(faculty.doLogin()) {
 					// Setup welcome
 					Label welcome = new Label(String.format("Welcome, %s %s!", faculty.getfName(), faculty.getlName()));
 					welcome.setFont( new Font(25) );
@@ -319,21 +325,66 @@ public class FacultyResearch extends Application {
 	 *
 	 * @return userId
 	 */
-	private String userAuthenticate() {
-		// Show username login
-		TextInputDialog dialog = new TextInputDialog("Your ID");
+	private String[] userAuthenticate() {
+		// Create the login dialog
+		Dialog<Pair<String, String>> dialog = new Dialog<>();
 		dialog.setTitle("User Login");
 		dialog.setHeaderText("Enter Your Credentials");
-		dialog.setContentText("User ID:");
 
-		Optional<String> result = dialog.showAndWait();
-		String id = null;
+		// Set the button
+		ButtonType loginButtonType = new ButtonType("Login", ButtonBar.ButtonData.OK_DONE);
+		dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
+
+		// Create the username and password labels and fields
+		GridPane grid = new GridPane();
+		grid.setHgap(10);
+		grid.setVgap(10);
+		grid.setPadding(new Insets(20, 150, 10, 10));
+
+		TextField tfUsername = new TextField();
+		tfUsername.setPromptText("Id");
+		PasswordField password = new PasswordField();
+		password.setPromptText("Password");
+
+		grid.add(new Label("Id:"), 0, 0);
+		grid.add(tfUsername, 1, 0);
+		grid.add(new Label("Password:"), 0, 1);
+		grid.add(password, 1, 1);
+
+		dialog.getDialogPane().setContent(grid);
+
+		// Convert the result to a username-password-pair when the login button is clicked
+		dialog.setResultConverter(dialogButton -> {
+			if (dialogButton == loginButtonType) {
+				return new Pair<>(tfUsername.getText(), password.getText());
+			}
+			return null;
+		});
+
+		// Check result
+		Optional<Pair<String, String>> result = dialog.showAndWait();
+		String[] credentials = null;
 		if (result.isPresent()) {
-			id = result.get(); // Get userid
-			return id;
+			credentials = new String[2];
+			credentials[0] = tfUsername.getText();
+			credentials[1] = password.getText();
 		}
 
-		return "";
+		return credentials;
+//		// Show username login
+//		TextInputDialog dialog = new TextInputDialog("Your ID");
+//		dialog.setTitle("User Login");
+//		dialog.setHeaderText("Enter Your Credentials");
+//		dialog.setContentText("User ID:");
+//
+//		Optional<String> result = dialog.showAndWait();
+//		String id = null;
+//		if (result.isPresent()) {
+//			id = result.get(); // Get userid
+//			return id;
+//		}
+//
+//		return "";
 	}
 
 	/**
