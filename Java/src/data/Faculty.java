@@ -21,6 +21,8 @@ public class Faculty {
 	MySQLDatabase mysql = new MySQLDatabase();
 
 	// Constructor
+	public Faculty() { }
+
 	public Faculty(String id) {
 		this.id = id;
 	}
@@ -157,6 +159,30 @@ public class Faculty {
 		// Close mysql
 		mysql.close();
 		return modified;
+	}
+
+	/**
+	 * Gets all the faculty's projects
+	 *
+	 * @return arraylist of all projects associated with the faculty
+	 */
+	public ArrayList<ArrayList<String>> getAllMyProjects() throws DLException {
+		// Open mysql
+		mysql.connect();
+
+		// Create query
+		String query = "select p.projectid, p.projectname, f.lastname, p.projectdescription, p.budget, p.startdate, p.enddate from project p join faculty f on p.facultyid = ? and f.facultyid = p.facultyid";
+
+		// Prepare values
+		ArrayList<String> values = new ArrayList<>();
+		values.add(this.getId());
+
+		ArrayList<ArrayList<String>> data = mysql.getData( query, values );
+		data.remove(0); // Remove column names
+
+		// Close mysql
+		mysql.close();
+		return data;
 	}
 
 	// Getters

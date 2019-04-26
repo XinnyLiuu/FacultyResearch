@@ -27,7 +27,6 @@ CREATE TABLE faculty(
     CONSTRAINT FK_faculty_department FOREIGN KEY (DepartmentID) REFERENCES department(DepartmentID)
 );
 
-
 DROP TABLE IF EXISTS student;
 CREATE TABLE student(
     StudentID int(10) NOT NULL,
@@ -42,10 +41,9 @@ CREATE TABLE student(
 );
 
 
-
 DROP TABLE IF EXISTS project;
 CREATE TABLE project(
-    ProjectID int(10) NOT NULL,
+    ProjectID int(10) NOT NULL AUTO_INCREMENT,
     FacultyID int(10),
     ProjectName varchar(255),
     ProjectDescription varchar(255),
@@ -57,7 +55,6 @@ CREATE TABLE project(
     CONSTRAINT FK_project_faculty FOREIGN KEY(FacultyID) REFERENCES faculty(FacultyID),
     CONSTRAINT FK_project_student FOREIGN KEY(StudentID) REFERENCES student(StudentID)
 );
-
 
 
 --

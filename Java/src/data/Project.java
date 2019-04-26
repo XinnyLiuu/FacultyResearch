@@ -49,6 +49,15 @@ public class Project {
 		this.endDate = endDate;
 	}
 
+	public Project(String facultyId, String name, String desc, String budget, String startDate, String endDate) {
+		this.facultyId = facultyId;
+		this.name = name;
+		this.desc = desc;
+		this.budget = budget;
+		this.startDate = startDate;
+		this.endDate = endDate;
+	}
+
 	/**
 	 * Retrieve the values from the db using the project's id and update other attributes
 	 *
@@ -116,6 +125,34 @@ public class Project {
 	}
 
 	/**
+	 * Update the attributes in the db
+	 *
+	 * @returns num of rows affected
+	 */
+	public int putNoStudentId() throws DLException {
+		// Connect to Mysql
+		mysql.connect();
+
+		// Create query
+		String query = "update project set projectname = ?, projectdescription = ?, budget = ?, startdate = ?, enddate = ? where projectid = ?";
+
+		// Add properties to values ArrayList
+		ArrayList<String> values = new ArrayList<>();
+		values.add(this.getName());
+		values.add(this.getDesc());
+		values.add(this.getBudget());
+		values.add(this.getStartDate());
+		values.add(this.getEndDate());
+		values.add(this.getId());
+
+		int modified = mysql.setData(query, values);
+
+		// Close mysql
+		mysql.close();
+		return modified;
+	}
+
+	/**
 	 * Insert the attributes in the db
 	 *
 	 * @returns num of rows affected
@@ -137,6 +174,34 @@ public class Project {
 		values.add(this.getStartDate());
 		values.add(this.getEndDate());
 		values.add(this.getStudentId());
+
+		int modified = mysql.setData(query, values);
+
+		// Close mysql
+		mysql.close();
+		return modified;
+	}
+
+	/**
+	 * Insert the attributes in the db without projectid
+	 *
+	 * @returns num of rows affected
+	 */
+	public int postNoId() throws DLException {
+		// Connect to Mysql
+		mysql.connect();
+
+		// Create query
+		String query = "insert into project (facultyid, projectname, projectdescription, budget, startdate, enddate) values(?, ?, ?, ?, ?, ?);";
+
+		// Add properties to values ArrayList
+		ArrayList<String> values = new ArrayList<>();
+		values.add(this.getFacultyId());
+		values.add(this.getName());
+		values.add(this.getDesc());
+		values.add(this.getBudget());
+		values.add(this.getStartDate());
+		values.add(this.getEndDate());
 
 		int modified = mysql.setData(query, values);
 
