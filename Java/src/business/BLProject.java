@@ -9,21 +9,16 @@ import java.util.ArrayList;
  * Business layer for the project
  */
 public class BLProject extends Project {
-	public BLProject() {
-
-	}
+	public BLProject() { }
 
 	/**
-	 * Calls doGetAllFullProjects() from Project
+	 * Calls getAllFullProjects()
 	 *
-	 * @return true / false
+	 * @return
+	 * @throws DLException
 	 */
-	public ArrayList<ArrayList<String>> doGetAll() throws DLException  {
-		// Check size
-		if(getAllFullProjects().size() > 0) {
-			return getAllFullProjects();
-		}
-
-		return null;
+	public ArrayList<ArrayList<String>> doGetFullProjects() throws DLException {
+		ArrayList<ArrayList<String>> projects = getAllFullProjects();
+		return projects;
 	}
 }

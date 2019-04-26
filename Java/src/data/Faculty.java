@@ -57,7 +57,7 @@ public class Faculty {
 		ArrayList<ArrayList<String>> queryData = mysql.getData( query, values );
 
 		// Iterate through queryData and set the object's attributes
-		if(queryData.size() > 0) {
+		if(queryData.size() > 1) {
 			// Get the second row as the first row will be the column names
 			this.departmentId = queryData.get(1).get(0);
 			this.fName = queryData.get(1).get(1);

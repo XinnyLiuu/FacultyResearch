@@ -19,6 +19,8 @@ public class Student {
 	MySQLDatabase mysql = new MySQLDatabase();
 
 	// Constructor
+	public Student() { }
+
 	public Student(String id) {
 		this.id = id;
 	}
@@ -53,7 +55,7 @@ public class Student {
 		ArrayList<ArrayList<String>> queryData = mysql.getData( query, values );
 
 		// Iterate through queryData and set the object's attributes
-		if(queryData.size() > 0) {
+		if(queryData.size() > 1) {
 			// Get the second row as the first row will be the column names
 			this.departmentId = queryData.get(1).get(0);
 			this.fName = queryData.get(1).get(1);
@@ -147,6 +149,54 @@ public class Student {
 		// Close mysql
 		mysql.close();
 		return modified;
+	}
+
+	/**
+	 * Gets all the student's projects
+	 *
+	 * @return arraylist of all projects with faculty name associated with the student
+	 */
+	public ArrayList<ArrayList<String>> getAllMyProjects() throws DLException {
+		// Open mysql
+		mysql.connect();
+
+		// Create query
+		String query = "select distinct p.projectid, p.projectname, f.lastname, p.projectdescription, p.budget, p.startdate, p.enddate from project p join faculty f on p.studentid = ?";
+
+		// Prepare values
+		ArrayList<String> values = new ArrayList<>();
+		values.add(this.getId());
+
+		ArrayList<ArrayList<String>> data = mysql.getData( query, values );
+		data.remove(0); // Remove column names
+
+		// Close mysql
+		mysql.close();
+		return data;
+	}
+
+	/**
+	 * Gets all the student's projects by department
+	 *
+	 * @return arraylist of all projects with faculty name associated with the department
+	 */
+	public ArrayList<ArrayList<String>> getAllDepartmentProjects() throws DLException {
+		// Open mysql
+		mysql.connect();
+
+		// Create query
+		String query = "select p.projectid, p.projectname, f.lastname, p.projectdescription, p.budget, p.startdate, p.enddate from project p join faculty f on f.departmentid = ? and f.facultyid = p.facultyid";
+
+		// Prepare values
+		ArrayList<String> values = new ArrayList<>();
+		values.add(this.getDepartmentId());
+
+		ArrayList<ArrayList<String>> data = mysql.getData( query, values );
+		data.remove(0); // Remove column names
+
+		// Close mysql
+		mysql.close();
+		return data;
 	}
 
 	// Getters

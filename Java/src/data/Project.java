@@ -22,6 +22,8 @@ public class Project {
 	MySQLDatabase mysql = new MySQLDatabase();
 
 	// Constructor
+	public Project() { }
+
 	public Project(String id) {
 		this.id = id;
 	}
@@ -47,9 +49,6 @@ public class Project {
 		this.endDate = endDate;
 	}
 
-	// This constructor will get ALL projects from the database
-	public Project() { }
-
 	/**
 	 * Retrieve the values from the db using the project's id and update other attributes
 	 *
@@ -70,7 +69,7 @@ public class Project {
 		ArrayList<ArrayList<String>> queryData = mysql.getData(query, values);
 
 		// Iterate through queryData and set the object's attributes
-		if (queryData.size() > 0) {
+		if (queryData.size() > 1) {
 			// Get the second row as the first row will be the column names
 			this.facultyId = queryData.get(1).get(0);
 			this.studentId = queryData.get(1).get(1);
@@ -172,7 +171,7 @@ public class Project {
 	/**
 	 * Gets all the projects with faculty name
 	 *
-	 * @return
+	 * @return arraylist of all projects with faculty name
 	 */
 	public ArrayList<ArrayList<String>> getAllFullProjects() throws DLException {
 		// Open mysql
@@ -219,5 +218,7 @@ public class Project {
 		return endDate;
 	}
 
-	public String getFaculty() { return faculty; }
+	public String getFaculty() {
+		return faculty;
+	}
 }
