@@ -371,20 +371,6 @@ public class FacultyResearch extends Application {
 		}
 
 		return credentials;
-//		// Show username login
-//		TextInputDialog dialog = new TextInputDialog("Your ID");
-//		dialog.setTitle("User Login");
-//		dialog.setHeaderText("Enter Your Credentials");
-//		dialog.setContentText("User ID:");
-//
-//		Optional<String> result = dialog.showAndWait();
-//		String id = null;
-//		if (result.isPresent()) {
-//			id = result.get(); // Get userid
-//			return id;
-//		}
-//
-//		return "";
 	}
 
 	/**
