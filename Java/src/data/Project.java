@@ -16,6 +16,8 @@ public class Project {
 	private String startDate;
 	private String endDate;
 
+	private String faculty;
+
 	// MySQL
 	MySQLDatabase mysql = new MySQLDatabase();
 
@@ -24,7 +26,6 @@ public class Project {
 		this.id = id;
 	}
 
-	// Constructor
 	public Project(String id, String facultyId, String studentId, String name, String desc, String budget, String startDate, String endDate) {
 		this.id = id;
 		this.facultyId = facultyId;
@@ -35,6 +36,19 @@ public class Project {
 		this.startDate = startDate;
 		this.endDate = endDate;
 	}
+
+	public Project(String id, String name, String faculty, String desc, String budget, String startDate, String endDate) {
+		this.id = id;
+		this.name = name;
+		this.faculty = faculty;
+		this.desc = desc;
+		this.budget = budget;
+		this.startDate = startDate;
+		this.endDate = endDate;
+	}
+
+	// This constructor will get ALL projects from the database
+	public Project() { }
 
 	/**
 	 * Retrieve the values from the db using the project's id and update other attributes
@@ -155,6 +169,25 @@ public class Project {
 		return modified;
 	}
 
+	/**
+	 * Gets all the projects with faculty name
+	 *
+	 * @return
+	 */
+	public ArrayList<ArrayList<String>> getAllFullProjects() throws DLException {
+		// Open mysql
+		mysql.connect();
+
+		// Create query
+		String query = "select p.projectid, p.projectname, f.lastname, p.projectdescription, p.budget, p.startdate, p.enddate from project p join faculty f where p.facultyid = f.facultyid";
+
+		ArrayList<ArrayList<String>> data = mysql.getData( query );
+
+		// Close mysql
+		mysql.close();
+		return data;
+	}
+
 	// Getters
 	public String getId() {
 		return id;
@@ -185,4 +218,6 @@ public class Project {
 	public String getEndDate() {
 		return endDate;
 	}
+
+	public String getFaculty() { return faculty; }
 }
