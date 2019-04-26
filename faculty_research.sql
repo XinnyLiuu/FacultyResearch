@@ -23,6 +23,7 @@ CREATE TABLE faculty(
     OfficeBuilding varchar(10),
     OfficePhoneNumber varchar(20),
     OfficeRoomNumber varchar(10),
+    Password char(96),
     PRIMARY KEY (FacultyID),
     CONSTRAINT FK_faculty_department FOREIGN KEY (DepartmentID) REFERENCES department(DepartmentID)
 );
@@ -36,6 +37,7 @@ CREATE TABLE student(
     Email varchar(30),
     SchoolYear varchar(20),
     Major varchar(30),
+    Password char(96),
     PRIMARY KEY(StudentID),
     CONSTRAINT FK_student_department FOREIGN KEY(DepartmentID) REFERENCES department(DepartmentID)
 );
@@ -71,34 +73,33 @@ INSERT INTO department VALUES(5, "Software Engineering","GOL-1690");
 --
 -- Dumping data for table 'faculty'
 --
--- Fields: FacultyID, DepartmentID, FirstName, LastName,Email,Interest,OfficeBuilding,OfficePhoneNumber,OfficeRoomNumber
-INSERT INTO faculty VALUES(1, 1, "Reynold", "Bailey", "rjb@cs.rit.edu", "CS", "Golisano", "585-475-6181", "GOL-3005");
-INSERT INTO faculty VALUES(2, 1, "Ivona", "Bezakova", "ib@cs.rit.edu", "CS", "Golisano", "585-475-4526", "GOL-3645");
-INSERT INTO faculty VALUES(3, 2, "Giovani", "Abuaitah", "graics@rit.edu", "CSEC", "Golisano", "585-475-4316", "GOL-2321");
-INSERT INTO faculty VALUES(4, 2, "Hrishikesh", "Archarya", "hbaics@rit.edu", "CSEC", "Golisano", "585-475-2801", "GOL-2647");
-INSERT INTO faculty VALUES(5, 3, "Dan", "Bogaard", "dsbics@rit.edu", "ISTE", "Golisano", "585-475-5231", "GOL-2111");
-INSERT INTO faculty VALUES(6, 3, "Michael", "Floeser", "Michael.Floeser@rit.edu", "ISTE", "Golisano", "585-475-7031", "GOL-2669");
-INSERT INTO faculty VALUES(7, 4, "David", "Schwartz", "disvks@rit.edu", "IGM", "Golisano", "585-475-5521", "GOL-2157");
-INSERT INTO faculty VALUES(8, 4, "Jessica", "Bayliss", "jdbics@rit.edu", "IGM", "Golisano", "585-475-2507", "GOL-2153");
-INSERT INTO faculty VALUES(9, 5, "Travis", "Desell", "tjdvse@rit.edu", "SE", "Golisano", NULL, "GOL-1559");
-INSERT INTO faculty VALUES(10, 5, "Scott", "Hawker", "hawker@mail.rit.edu", "SE", "Golisano", "585-475-2705", "GOL-1696");	
-
+-- Fields: FacultyID, DepartmentID, FirstName, LastName, Email, Interest, OfficeBuilding, OfficePhoneNumber, OfficeRoomNumber, Password
+INSERT INTO faculty select 1, 1, "Reynold", "Bailey", "rjb@cs.rit.edu", "CS", "Golisano", "585-475-6181", "GOL-3005", SHA2("password", 256);; 
+INSERT INTO faculty select 2, 1, "Ivona", "Bezakova", "ib@cs.rit.edu", "CS", "Golisano", "585-475-4526", "GOL-3645", SHA2("password", 256); 
+INSERT INTO faculty select 3, 2, "Giovani", "Abuaitah", "graics@rit.edu", "CSEC", "Golisano", "585-475-4316", "GOL-2321", SHA2("password", 256); 
+INSERT INTO faculty select 4, 2, "Hrishikesh", "Archarya", "hbaics@rit.edu", "CSEC", "Golisano", "585-475-2801", "GOL-2647", SHA2("password", 256); 
+INSERT INTO faculty select 5, 3, "Dan", "Bogaard", "dsbics@rit.edu", "ISTE", "Golisano", "585-475-5231", "GOL-2111", SHA2("password", 256); 
+INSERT INTO faculty select 6, 3, "Michael", "Floeser", "Michael.Floeser@rit.edu", "ISTE", "Golisano", "585-475-7031", "GOL-2669", SHA2("password", 256); 
+INSERT INTO faculty select 7, 4, "David", "Schwartz", "disvks@rit.edu", "IGM", "Golisano", "585-475-5521", "GOL-2157", SHA2("password", 256); 
+INSERT INTO faculty select 8, 4, "Jessica", "Bayliss", "jdbics@rit.edu", "IGM", "Golisano", "585-475-2507", "GOL-2153", SHA2("password", 256); 
+INSERT INTO faculty select 9, 5, "Travis", "Desell", "tjdvse@rit.edu", "SE", "Golisano", NULL, "GOL-1559", SHA2("password", 256); 
+INSERT INTO faculty select 10, 5, "Scott", "Hawker", "hawker@mail.rit.edu", "SE", "Golisano", "585-475-2705", "GOL-1696", SHA2("password", 256); 	
 
 
 --
 -- Dumping data for table 'student'
 --
--- Fields: StudentID, DepartmentID, FirstName, LastName, Email, SchoolYear, Major
-INSERT INTO student VALUES(1, 1, 'John', 'Smith','js1434@rit.edu','Sophomore','CS');
-INSERT INTO student VALUES(2, 2, 'George', 'Brown','gb6745@rit.edu','Junior','CSEC');
-INSERT INTO student VALUES(3, 3, 'Carmen', 'Tang','ct7891@rit.edu','Freshman','IST');
-INSERT INTO student VALUES(4, 4, 'Laura', 'Diaze','ldz3142@rit.edu','Freshman','IGM');
-INSERT INTO student VALUES(5, 5, 'Fred', 'Amarty','fd5930@rit.edu','Junior','SE');
-INSERT INTO student VALUES(6, 1, 'Ronald', 'Sowah','rs9030@rit.edu','Senior','CS');
-INSERT INTO student VALUES(7, 2, 'Desley','Brown','db8930@rit.edu','Freshman','CSEC');
-INSERT INTO student VALUES(8, 3, 'Tiffany', 'Dubon','td8197@rit.edu','Sophomore','IST');
-INSERT INTO student VALUES(9, 4, 'Lauren', 'Campbell','lc2543@rit.edu','Freshman','IGM');
-INSERT INTO student VALUES(10, 5, 'Sam', 'Illesamni','smoi3030@rit.edu','Junior','SE');
+-- Fields: StudentID, DepartmentID, FirstName, LastName, Email, SchoolYear, Major, Password
+INSERT INTO student select 1, 1, 'John', 'Smith','js1434@rit.edu','Sophomore','CS', SHA2("password", 256);
+INSERT INTO student select 2, 2, 'George', 'Brown','gb6745@rit.edu','Junior','CSEC', SHA2("password", 256);
+INSERT INTO student select 3, 3, 'Carmen', 'Tang','ct7891@rit.edu','Freshman','IST', SHA2("password", 256);
+INSERT INTO student select 4, 4, 'Laura', 'Diaze','ldz3142@rit.edu','Freshman','IGM', SHA2("password", 256);
+INSERT INTO student select 5, 5, 'Fred', 'Amarty','fd5930@rit.edu','Junior','SE', SHA2("password", 256);
+INSERT INTO student select 6, 1, 'Ronald', 'Sowah','rs9030@rit.edu','Senior','CS', SHA2("password", 256);
+INSERT INTO student select 7, 2, 'Desley','Brown','db8930@rit.edu','Freshman','CSEC', SHA2("password", 256);
+INSERT INTO student select 8, 3, 'Tiffany', 'Dubon','td8197@rit.edu','Sophomore','IST', SHA2("password", 256);
+INSERT INTO student select 9, 4, 'Lauren', 'Campbell','lc2543@rit.edu','Freshman','IGM', SHA2("password", 256);
+INSERT INTO student select 10, 5, 'Sam', 'Illesamni','smoi3030@rit.edu','Junior','SE', SHA2("password", 256);
 
 
 --
