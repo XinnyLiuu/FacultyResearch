@@ -333,8 +333,6 @@ public class MySQLDatabase {
 	 * FOR TRANSACTIONS
 	 *
 	 * Starts a database transaction
-	 *
-	 * @throws DLException
 	 */
 	public void startTrans() throws DLException {
 		try {
@@ -353,8 +351,6 @@ public class MySQLDatabase {
 	 * FOR TRANSACTIONS
 	 *
 	 * Ends a database transaction
-	 *
-	 * @throws DLException
 	 */
 	public void endTrans() throws DLException {
 		try {
@@ -374,8 +370,6 @@ public class MySQLDatabase {
 	 * FOR TRANSACTIONS
 	 *
 	 * Rollbacks a database transaction
-	 *
-	 * @throws DLException
 	 */
 	public void rollbackTrans() throws DLException {
 		try {

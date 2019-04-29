@@ -3,10 +3,9 @@ package data;
 import java.util.ArrayList;
 
 /**
- * Data layer of Faculty
+ * Data layer for Faculty
  */
 public class Faculty {
-	// Fields
 	private String id;
 	private String departmentId;
 	private String fName;
@@ -21,7 +20,7 @@ public class Faculty {
 	// MySQL
 	MySQLDatabase mysql = new MySQLDatabase();
 
-	// Constructor
+	// Constructors
 	public Faculty() { }
 
 	public Faculty(String id) {
@@ -48,7 +47,7 @@ public class Faculty {
 	/**
 	 * Retrieve the values from the db using the faculty's id and update other attributes
 	 *
-	 * @returns size of the data fetched
+	 * @return size of the data fetched
 	 */
 	public int get() throws DLException {
 		// Connect to Mysql
@@ -85,7 +84,7 @@ public class Faculty {
 	/**
 	 * Update the attributes in the db
 	 *
-	 * @returns num of rows affected
+	 * @return num of rows affected
 	 */
 	public int put() throws DLException {
 		// Connect to Mysql
@@ -116,7 +115,7 @@ public class Faculty {
 	/**
 	 * Insert the attributes in the db
 	 *
-	 * @returns num of rows affected
+	 * @return num of rows affected
 	 */
 	public int post() throws DLException {
 		// Connect to Mysql
@@ -145,9 +144,9 @@ public class Faculty {
 	}
 
 	/**
-	 * Delete method to delete a record in the database
+	 * Delete a record in the database
 	 *
-	 * @returns num of rows deleted
+	 * @return num of rows deleted
 	 */
 	public int delete() throws DLException {
 		// Connect to Mysql
@@ -170,8 +169,7 @@ public class Faculty {
 	/**
 	 * Checks the faculty's id and password against the ones in the database
 	 *
-	 * @return
-	 * @throws DLException
+	 * @return 1 - if the faculty exists based on the id and password given, 0 - if otherwise
 	 */
 	public int login() throws DLException {
 		// Open mysql
@@ -202,7 +200,7 @@ public class Faculty {
 	/**
 	 * Gets all the faculty's projects
 	 *
-	 * @return arraylist of all projects associated with the faculty
+	 * @return 2D arraylist of all projects associated with the faculty
 	 */
 	public ArrayList<ArrayList<String>> getAllMyProjects() throws DLException {
 		// Open mysql

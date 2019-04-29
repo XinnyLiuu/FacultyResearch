@@ -61,7 +61,7 @@ public class Project {
 	/**
 	 * Retrieve the values from the db using the project's id and update other attributes
 	 *
-	 * @returns size of the data fetched
+	 * @return size of the data fetched
 	 */
 	public int get() throws DLException {
 		// Connect to Mysql
@@ -97,7 +97,7 @@ public class Project {
 	/**
 	 * Update the attributes in the db
 	 *
-	 * @returns num of rows affected
+	 * @return num of rows affected
 	 */
 	public int put() throws DLException {
 		// Connect to Mysql
@@ -125,9 +125,9 @@ public class Project {
 	}
 
 	/**
-	 * Update the attributes in the db
+	 * Update the attributes in the db without a studentid
 	 *
-	 * @returns num of rows affected
+	 * @return num of rows affected
 	 */
 	public int putNoStudentId() throws DLException {
 		// Connect to Mysql
@@ -155,7 +155,7 @@ public class Project {
 	/**
 	 * Insert the attributes in the db
 	 *
-	 * @returns num of rows affected
+	 * @return num of rows affected
 	 */
 	public int post() throws DLException {
 		// Connect to Mysql
@@ -183,9 +183,9 @@ public class Project {
 	}
 
 	/**
-	 * Insert the attributes in the db without projectid
+	 * Insert the attributes in the db without projectid (NOTE: the id for objects in this table is autoincremented)
 	 *
-	 * @returns num of rows affected
+	 * @return num of rows affected
 	 */
 	public int postNoId() throws DLException {
 		// Connect to Mysql
@@ -213,7 +213,7 @@ public class Project {
 	/**
 	 * Delete method to delete a record in the database
 	 *
-	 * @returns num of rows deleted
+	 * @return num of rows deleted
 	 */
 	public int delete() throws DLException {
 		// Connect to Mysql

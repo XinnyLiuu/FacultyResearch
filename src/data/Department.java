@@ -28,7 +28,7 @@ public class Department {
 	/**
 	 * Retrieve the values from the db using the department's id and update other attributes
 	 *
-	 * @returns size of the data fetched
+	 * @return size of the data fetched
 	 */
 	public int get() throws DLException {
 		// Connect to Mysql
@@ -59,7 +59,7 @@ public class Department {
 	/**
 	 * Update the department in the db using the department's id as a selector
 	 *
-	 * @returns number of rows update
+	 * @return number of rows update
 	 */
 	public int put() throws DLException {
 		//connect to MySQL
@@ -84,7 +84,7 @@ public class Department {
 	/**
 	 * Insert the new department in the db using the department's id as a selector
 	 *
-	 * @returns number of rows updated
+	 * @return number of rows updated
 	 */
 	public int post() throws DLException {
 		// Connect to MySQL
@@ -109,7 +109,7 @@ public class Department {
 	/**
 	 * Delete the department in the db using the department's id as a selector
 	 *
-	 * @returns number of rows changed
+	 * @return number of rows changed
 	 */
 	public int delete() throws DLException {
 		// Connect to Mysql

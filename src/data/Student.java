@@ -44,7 +44,7 @@ public class Student {
 	/**
 	 * Retrieve the values from the db using the student's id and update other attributes
 	 *
-	 * @returns size of the data fetched
+	 * @return size of the data fetched
 	 */
 	public int get() throws DLException {
 		// Connect to Mysql
@@ -79,7 +79,7 @@ public class Student {
 	/**
 	 * Update the attributes in the db
 	 *
-	 * @returns num of rows affected
+	 * @return num of rows affected
 	 */
 	public int put() throws DLException {
 		// Connect to Mysql
@@ -108,7 +108,7 @@ public class Student {
 	/**
 	 * Insert the attributes in the db
 	 *
-	 * @returns num of rows affected
+	 * @return num of rows affected
 	 */
 	public int post() throws DLException {
 		// Connect to Mysql
@@ -137,7 +137,7 @@ public class Student {
 	/**
 	 * Delete method to delete a record in the database
 	 *
-	 * @returns num of rows deleted
+	 * @return num of rows deleted
 	 */
 	public int delete() throws DLException {
 		// Connect to Mysql
@@ -160,8 +160,7 @@ public class Student {
 	/**
 	 * Checks the student's id and password against the ones in the database
 	 *
-	 * @return
-	 * @throws DLException
+	 * @return 1 - if a student exists with the id and password given, 0 - if otherwise
 	 */
 	public int login() throws DLException {
 		// Open mysql
@@ -192,7 +191,7 @@ public class Student {
 	/**
 	 * Gets all the student's projects
 	 *
-	 * @return arraylist of all projects with faculty name associated with the student
+	 * @return 2D arraylist of all projects with faculty name associated with the student
 	 */
 	public ArrayList<ArrayList<String>> getAllMyProjects() throws DLException {
 		// Open mysql
@@ -216,7 +215,7 @@ public class Student {
 	/**
 	 * Gets all the student's projects by department
 	 *
-	 * @return arraylist of all projects with faculty name associated with the department
+	 * @return 2D arraylist of all projects with faculty name associated with the department
 	 */
 	public ArrayList<ArrayList<String>> getAllDepartmentProjects() throws DLException {
 		// Open mysql

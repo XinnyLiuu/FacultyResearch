@@ -9,6 +9,7 @@ import java.util.ArrayList;
  * Business layer for the project
  */
 public class BLProject extends Project {
+	// Constructors
 	public BLProject() { }
 
 	public BLProject(String id) {
@@ -26,7 +27,7 @@ public class BLProject extends Project {
 	/**
 	 * Calls postNoId()
 	 *
-	 * @throws DLException
+	 * @return true - if insert worked, false - if otherwise
 	 */
 	public boolean doPostNoId() throws DLException {
 		if(postNoId() > 0) {
@@ -39,7 +40,7 @@ public class BLProject extends Project {
 	/**
 	 * Calls putNoStudentId()
 	 *
-	 * @throws DLException
+	 * @return true - if inserted, false - if otherwise
 	 */
 	public boolean doPutNoStudentId() throws DLException {
 		if(putNoStudentId() > 0) {
@@ -52,7 +53,7 @@ public class BLProject extends Project {
 	/**
 	 * Calls doDelete()
 	 *
-	 * @throws DLException
+	 * @return true - if deleted, false - if otherwise
 	 */
 	public boolean doDelete() throws DLException {
 		if(delete() > 0) {
@@ -65,8 +66,7 @@ public class BLProject extends Project {
 	/**
 	 * Calls getAllFullProjects()
 	 *
-	 * @return
-	 * @throws DLException
+	 * @return 2D arraylist of all the
 	 */
 	public ArrayList<ArrayList<String>> doGetFullProjects() throws DLException {
 		ArrayList<ArrayList<String>> projects = getAllFullProjects();

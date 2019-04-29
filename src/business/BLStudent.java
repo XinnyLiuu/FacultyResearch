@@ -9,6 +9,7 @@ import java.util.ArrayList;
  * Business layer for Student
  */
 public class BLStudent extends Student {
+	// Constructors
 	public BLStudent() { }
 
 	public BLStudent(String id) {
@@ -35,22 +36,18 @@ public class BLStudent extends Student {
 	/**
 	 * Calls getAllMyProjects()
 	 *
-	 * @return
-	 * @throws DLException
+	 * @return 2D Arraylist of all the student's projects
 	 */
 	public ArrayList<ArrayList<String>> doGetMyProjects() throws DLException  {
-		ArrayList<ArrayList<String>> projects = getAllMyProjects();
-		return projects;
+		return getAllMyProjects();
 	}
 
 	/**
 	 * Calls getAllDepartmentProjects()
 	 *
-	 * @return
-	 * @throws DLException
+	 * @return 2D Arraylist of all the projects of the student's department
 	 */
 	public ArrayList<ArrayList<String>> doGetAllDepartmentProjects() throws DLException {
-		ArrayList<ArrayList<String>> projects = getAllDepartmentProjects();
-		return projects;
+		return getAllDepartmentProjects();
 	}
 }

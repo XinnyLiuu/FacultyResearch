@@ -5,7 +5,11 @@ import data.Faculty;
 
 import java.util.ArrayList;
 
+/**
+ * Business layer for Faculty
+ */
 public class BLFaculty extends Faculty {
+	// Constructors
 	public BLFaculty() { }
 
 	public BLFaculty(String id) {
@@ -17,9 +21,9 @@ public class BLFaculty extends Faculty {
 	}
 
 	/**
-	 * Check if the user exists
+	 * Calls login()
 	 *
-	 * @return true / false
+	 * @return true - if successful login, false - if otherwise
 	 */
 	public boolean doLogin() throws DLException {
 		if(login() == 1) {
@@ -32,11 +36,9 @@ public class BLFaculty extends Faculty {
 	/**
 	 * Calls getAllMyProjects()
 	 *
-	 * @return
-	 * @throws DLException
+	 * @return 2D ArrayList of all the faculty's projects
 	 */
 	public ArrayList<ArrayList<String>> doGetMyProjects() throws DLException  {
-		ArrayList<ArrayList<String>> projects = getAllMyProjects();
-		return projects;
+		return getAllMyProjects();
 	}
 }
