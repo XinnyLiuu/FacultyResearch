@@ -44,6 +44,7 @@ public class Student {
 	/**
 	 * Retrieve the values from the db using the student's id and update other attributes
 	 *
+	 * @throws DLException if any MySQLDatabase methods errors
 	 * @return size of the data fetched
 	 */
 	public int get() throws DLException {
@@ -79,6 +80,7 @@ public class Student {
 	/**
 	 * Update the attributes in the db
 	 *
+	 * @throws DLException if any MySQLDatabase methods errors
 	 * @return num of rows affected
 	 */
 	public int put() throws DLException {
@@ -108,6 +110,7 @@ public class Student {
 	/**
 	 * Insert the attributes in the db
 	 *
+	 * @throws DLException if any MySQLDatabase methods errors
 	 * @return num of rows affected
 	 */
 	public int post() throws DLException {
@@ -137,6 +140,7 @@ public class Student {
 	/**
 	 * Delete method to delete a record in the database
 	 *
+	 * @throws DLException if any MySQLDatabase methods errors
 	 * @return num of rows deleted
 	 */
 	public int delete() throws DLException {
@@ -160,6 +164,7 @@ public class Student {
 	/**
 	 * Checks the student's id and password against the ones in the database
 	 *
+	 * @throws DLException if any MySQLDatabase methods errors
 	 * @return 1 - if a student exists with the id and password given, 0 - if otherwise
 	 */
 	public int login() throws DLException {
@@ -191,6 +196,7 @@ public class Student {
 	/**
 	 * Gets all the student's projects
 	 *
+	 * @throws DLException if any MySQLDatabase methods errors
 	 * @return 2D arraylist of all projects with faculty name associated with the student
 	 */
 	public ArrayList<ArrayList<String>> getAllMyProjects() throws DLException {
@@ -215,6 +221,7 @@ public class Student {
 	/**
 	 * Gets all the student's projects by department
 	 *
+	 * @throws DLException if any MySQLDatabase methods errors
 	 * @return 2D arraylist of all projects with faculty name associated with the department
 	 */
 	public ArrayList<ArrayList<String>> getAllDepartmentProjects() throws DLException {

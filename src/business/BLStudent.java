@@ -23,6 +23,7 @@ public class BLStudent extends Student {
 	/**
 	 * Check if the user exists
 	 *
+	 * @throws DLException if login() fails
 	 * @return true / false
 	 */
 	public boolean doLogin() throws DLException {
@@ -36,6 +37,7 @@ public class BLStudent extends Student {
 	/**
 	 * Calls getAllMyProjects()
 	 *
+	 * @throws DLException if getAllMyProjects() fails
 	 * @return 2D Arraylist of all the student's projects
 	 */
 	public ArrayList<ArrayList<String>> doGetMyProjects() throws DLException  {
@@ -45,6 +47,7 @@ public class BLStudent extends Student {
 	/**
 	 * Calls getAllDepartmentProjects()
 	 *
+	 * @throws DLException if getAllDepartmentProjects() fails
 	 * @return 2D Arraylist of all the projects of the student's department
 	 */
 	public ArrayList<ArrayList<String>> doGetAllDepartmentProjects() throws DLException {

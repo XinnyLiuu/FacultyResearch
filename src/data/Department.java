@@ -28,6 +28,7 @@ public class Department {
 	/**
 	 * Retrieve the values from the db using the department's id and update other attributes
 	 *
+	 * @throws DLException if any MySQLDatabase methods errors
 	 * @return size of the data fetched
 	 */
 	public int get() throws DLException {
@@ -59,6 +60,7 @@ public class Department {
 	/**
 	 * Update the department in the db using the department's id as a selector
 	 *
+	 * @throws DLException if any MySQLDatabase methods errors
 	 * @return number of rows update
 	 */
 	public int put() throws DLException {
@@ -84,6 +86,7 @@ public class Department {
 	/**
 	 * Insert the new department in the db using the department's id as a selector
 	 *
+	 * @throws DLException if any MySQLDatabase methods errors
 	 * @return number of rows updated
 	 */
 	public int post() throws DLException {
@@ -109,6 +112,7 @@ public class Department {
 	/**
 	 * Delete the department in the db using the department's id as a selector
 	 *
+	 * @throws DLException if any MySQLDatabase methods errors
 	 * @return number of rows changed
 	 */
 	public int delete() throws DLException {

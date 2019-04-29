@@ -22,7 +22,9 @@ public class MySQLDatabase {
 
 	/**
 	 * Attempts to connect to a database
-	 * @return Boolean true/false
+	 *
+	 * @throws DLException if driver is not found and if authentication to mysql fails
+	 * @return true - if connected, false - if not
 	 */
 	public boolean connect() throws DLException {
 		try {
@@ -47,6 +49,8 @@ public class MySQLDatabase {
 
 	/**
 	 * Attempts to close the connection to a database
+	 *
+	 * @throws DLException if connection object is null and if closing connection fails
 	 * @return Boolean true/false
 	 */
 	public boolean close() throws DLException {
@@ -69,7 +73,9 @@ public class MySQLDatabase {
 
 	/**
 	 * Uses the 'select' sql query to retrieve data from a database and store it in a 2D ArrayList
+	 *
 	 * @param query SQL string
+	 * @throws DLException if connection object is null and if query attempted fails
 	 * @return 2D array containing results from MySQL query
 	 */
 	public ArrayList<ArrayList<String>> getData(String query) throws DLException {
@@ -120,6 +126,7 @@ public class MySQLDatabase {
 	 *
 	 * @param query SQL string
 	 * @param hasColumnNames true or false to determine whether or not the 2D array will contain the column names
+	 * @throws DLException if connection object is null and if query attempted fails
 	 * @return 2D array containing results from MySQL query
 	 */
 	public ArrayList<ArrayList<String>> getData(String query, boolean hasColumnNames) throws DLException {
@@ -177,6 +184,7 @@ public class MySQLDatabase {
 	 *
 	 * @param query SQL string
 	 * @param values List of values to be prepared into SQL string
+	 * @throws DLException if query attempted fails
 	 * @return 2D list of column names and result values
 	 */
 	public ArrayList<ArrayList<String>> getData(String query, ArrayList<String> values) throws DLException {
@@ -239,7 +247,9 @@ public class MySQLDatabase {
 
 	/**
 	 * Uses 'update', 'delete, or 'insert' queries to manipulate data in database
-	 * @params The query string
+	 *
+	 * @param query The query string
+	 * @throws DLException if connection object is null and if query attempted fails
 	 * @return Number of records affected
 	 */
 	public int setData(String query) throws DLException {
@@ -266,8 +276,10 @@ public class MySQLDatabase {
 	 * FOR PREPARED STATEMENTS
 	 *
 	 * This method calls the executeStmt() method. Uses 'update', 'delete', or 'insert' queries to manipulate data in database
+	 *
 	 * @param query SQL string
 	 * @param values List of values
+	 * @throws DLException if executeStmt() fails
 	 * @return Number of records affected
 	 */
 	public int setData(String query, ArrayList<String> values) throws DLException {
@@ -278,8 +290,10 @@ public class MySQLDatabase {
 	 * FOR PREPARED STATEMENTS
 	 *
 	 * Accepts a SQL query and a list of string values, prepares it and returns a prepared statement
+	 *
 	 * @param query SQL string
 	 * @param values List of values
+	 * @throws DLException if connection object is null and if query attempted fails
 	 * @return PreparedStatement object
 	 */
 	public PreparedStatement prepare(String query, ArrayList<String> values) throws DLException {
@@ -303,8 +317,10 @@ public class MySQLDatabase {
 	 * FOR PREPARED STATEMENTS
 	 *
 	 * This method calls the prepare() method, binds it and execute it. Used with setData() method
+	 *
 	 * @param query SQL string
 	 * @param values List of values
+	 * @throws DLException if query attempted fails
 	 * @return Count of rows modified
 	 */
 	public int executeStmt(String query, ArrayList<String> values) throws DLException {
@@ -333,6 +349,8 @@ public class MySQLDatabase {
 	 * FOR TRANSACTIONS
 	 *
 	 * Starts a database transaction
+	 *
+	 * @throws DLException if connection object is null and if starting transaction fails
 	 */
 	public void startTrans() throws DLException {
 		try {
@@ -351,6 +369,8 @@ public class MySQLDatabase {
 	 * FOR TRANSACTIONS
 	 *
 	 * Ends a database transaction
+	 *
+	 * @throws DLException if connection object is null and if committing and ending transaction fails
 	 */
 	public void endTrans() throws DLException {
 		try {
@@ -370,6 +390,8 @@ public class MySQLDatabase {
 	 * FOR TRANSACTIONS
 	 *
 	 * Rollbacks a database transaction
+	 *
+	 * @throws DLException if connection object is null and if rollback fails
 	 */
 	public void rollbackTrans() throws DLException {
 		try {

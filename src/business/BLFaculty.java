@@ -23,6 +23,7 @@ public class BLFaculty extends Faculty {
 	/**
 	 * Calls login()
 	 *
+	 * @throws DLException if login() fails
 	 * @return true - if successful login, false - if otherwise
 	 */
 	public boolean doLogin() throws DLException {
@@ -36,6 +37,7 @@ public class BLFaculty extends Faculty {
 	/**
 	 * Calls getAllMyProjects()
 	 *
+	 * @throws DLException if getAllMyProjects() fails
 	 * @return 2D ArrayList of all the faculty's projects
 	 */
 	public ArrayList<ArrayList<String>> doGetMyProjects() throws DLException  {

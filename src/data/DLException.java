@@ -18,6 +18,7 @@ public class DLException extends Exception {
 
 	/**
 	 * This constructor will take the exception passed in from a data layer
+	 *
 	 * @param e exception caught a data layer
 	 */
 	public DLException(Exception e) {
@@ -27,6 +28,7 @@ public class DLException extends Exception {
 
 	/**
 	 * This constructor will take the exception and an array of strings passed in from a data layer
+	 *
 	 * @param e exception caught a data layer
 	 * @param msg error message
 	 * @param s array of strings
@@ -38,6 +40,7 @@ public class DLException extends Exception {
 
 	/**
 	 * Writes all available information, a timestamp to a text log file. Called in the constructor.
+	 *
 	 * @param e Exception caught
 	 * @param s Information strings that are passed to the constructor
 	 */

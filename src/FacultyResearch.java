@@ -130,7 +130,9 @@ public class FacultyResearch extends Application {
 				}
 			}
 			catch(DLException dle) {
-				dle.printStackTrace();
+				Alert alert = new Alert(Alert.AlertType.ERROR, "There was an error logging the user in! Please try again!");
+				alert.showAndWait();
+				System.exit(1);
 			}
 
 			// Show GUI
@@ -267,7 +269,9 @@ public class FacultyResearch extends Application {
 				}
 			}
 			catch(DLException dle) {
-				dle.printStackTrace();
+				Alert alert = new Alert(Alert.AlertType.ERROR, "There was an error logging the user in! Please try again!");
+				alert.showAndWait();
+				System.exit(1);
 			}
 
 			// Show GUI
@@ -376,8 +380,8 @@ public class FacultyResearch extends Application {
 	/**
 	 * GENERIC project table building
 	 *
-	 * @param tableView
-	 * @param projects
+	 * @param tableView TableView object to be setup
+	 * @param projects 2D arraylist of all the projects
 	 */
 	private void setUpProjectTable(TableView tableView, ArrayList<ArrayList<String>> projects) {
 		// Make columns
@@ -423,6 +427,8 @@ public class FacultyResearch extends Application {
 	 * FOR PUBLIC USERS
 	 *
 	 * Prepares the table view of all the projects for PUBLIC
+	 *
+	 * @param tableView TableView object to be setup
 	 */
 	private TableView setUpPublicTable(TableView tableView) {
 		// Create table view for all projects
@@ -439,7 +445,9 @@ public class FacultyResearch extends Application {
 			setUpProjectTable( tableView, projects );
 		}
 		catch (DLException dle) {
-			dle.printStackTrace();
+			Alert alert = new Alert(Alert.AlertType.ERROR, "There was an error setting up the table! Please try again!");
+			alert.showAndWait();
+			System.exit(1);
 		}
 
 		return tableView;
@@ -449,6 +457,9 @@ public class FacultyResearch extends Application {
 	 * FOR STUDENT USERS
 	 *
 	 * Prepares the table view of all the projects for the current student
+	 *
+	 * @param tableView TableView object to be setup
+	 * @param student business layer object of the student whose table is to be setup
 	 */
 	private TableView setUpStudentTable(TableView tableView, BLStudent student) {
 		// Create table view for all projects
@@ -461,7 +472,9 @@ public class FacultyResearch extends Application {
 			// Build project
 			setUpProjectTable( tableView, projects );
 		} catch (DLException dle) {
-			dle.printStackTrace();
+			Alert alert = new Alert(Alert.AlertType.ERROR, "There was an error setting up the table! Please try again!");
+			alert.showAndWait();
+			System.exit(1);
 		}
 
 		return tableView;
@@ -471,6 +484,9 @@ public class FacultyResearch extends Application {
 	 * FOR STUDENT USERS
 	 *
 	 * Prepares the table view of all the projects for the current student's department
+	 *
+	 * @param tableView TableView object to be setup
+	 * @param student business layer for the student whose table is to be setup
 	 */
 	private TableView setUpStudentDeptTable(TableView tableView, BLStudent student) {
 		// Create table view for all projects
@@ -483,7 +499,9 @@ public class FacultyResearch extends Application {
 			// Build project
 			setUpProjectTable( tableView, projects );
 		} catch (DLException dle) {
-			dle.printStackTrace();
+			Alert alert = new Alert(Alert.AlertType.ERROR, "There was an error setting up the table! Please try again!");
+			alert.showAndWait();
+			System.exit(1);
 		}
 
 		return tableView;
@@ -493,6 +511,9 @@ public class FacultyResearch extends Application {
 	 * FOR FACULTY USERS
 	 *
 	 * Prepares the table view of all the projects for the faculty
+	 *
+	 * @param tableView TableView object to be setup
+	 * @param faculty business layer faculty whose table is being prepared
 	 */
 	private TableView setUpFacultyTable(TableView tableView, BLFaculty faculty) {
 		// Create table view for all projects
@@ -505,7 +526,9 @@ public class FacultyResearch extends Application {
 			// Build project
 			setUpProjectTable( tableView, projects );
 		} catch (DLException dle) {
-			dle.printStackTrace();
+			Alert alert = new Alert(Alert.AlertType.ERROR, "There was an error setting up the table! Please try again!");
+			alert.showAndWait();
+			System.exit(1);
 		}
 
 		return tableView;
@@ -515,6 +538,8 @@ public class FacultyResearch extends Application {
 	 * FOR FACULTY USERS
 	 *
 	 * Fires when the add button is clicked
+	 *
+	 * @param faculty business layer faculty object that is performing the addition of a project
 	 */
 	private void doFacultyAdd(BLFaculty faculty) {
 		// Check inputs
@@ -599,7 +624,9 @@ public class FacultyResearch extends Application {
 			}
 		}
 		catch(DLException dle) {
-			dle.printStackTrace();
+			Alert alert = new Alert(Alert.AlertType.ERROR, "There was an error adding the project! Please try again!");
+			alert.showAndWait();
+			System.exit(1);
 		}
 	}
 
@@ -607,6 +634,8 @@ public class FacultyResearch extends Application {
 	 * FOR FACULTY USERS
 	 *
 	 * Fires when the update button is clicked
+	 *
+	 * @param faculty business layer object for the faculty that is performing the update on a project
 	 */
 	private void doFacultyUpdate(BLFaculty faculty) {
 		// Check inputs
@@ -706,8 +735,9 @@ public class FacultyResearch extends Application {
 			}
 		}
 		catch(DLException dle) {
-			dle.printStackTrace();
-		}
+			Alert alert = new Alert(Alert.AlertType.ERROR, "There was an error updating the project! Please try again!");
+			alert.showAndWait();
+			System.exit(1);		}
 	}
 
 	/**
@@ -753,7 +783,9 @@ public class FacultyResearch extends Application {
 			}
 		}
 		catch(DLException dle) {
-			dle.printStackTrace();
+			Alert alert = new Alert(Alert.AlertType.ERROR, "There was an error deleting the project! Please try again!");
+			alert.showAndWait();
+			System.exit(1);
 		}
 	}
 }

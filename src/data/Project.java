@@ -61,6 +61,7 @@ public class Project {
 	/**
 	 * Retrieve the values from the db using the project's id and update other attributes
 	 *
+	 * @throws DLException if any MySQLDatabase methods errors
 	 * @return size of the data fetched
 	 */
 	public int get() throws DLException {
@@ -97,6 +98,7 @@ public class Project {
 	/**
 	 * Update the attributes in the db
 	 *
+	 * @throws DLException if any MySQLDatabase methods errors
 	 * @return num of rows affected
 	 */
 	public int put() throws DLException {
@@ -127,6 +129,7 @@ public class Project {
 	/**
 	 * Update the attributes in the db without a studentid
 	 *
+	 * @throws DLException if any MySQLDatabase methods errors
 	 * @return num of rows affected
 	 */
 	public int putNoStudentId() throws DLException {
@@ -155,6 +158,7 @@ public class Project {
 	/**
 	 * Insert the attributes in the db
 	 *
+	 * @throws DLException if any MySQLDatabase methods errors
 	 * @return num of rows affected
 	 */
 	public int post() throws DLException {
@@ -185,6 +189,7 @@ public class Project {
 	/**
 	 * Insert the attributes in the db without projectid (NOTE: the id for objects in this table is autoincremented)
 	 *
+	 * @throws DLException if any MySQLDatabase methods errors
 	 * @return num of rows affected
 	 */
 	public int postNoId() throws DLException {
@@ -213,6 +218,7 @@ public class Project {
 	/**
 	 * Delete method to delete a record in the database
 	 *
+	 * @throws DLException if any MySQLDatabase methods errors
 	 * @return num of rows deleted
 	 */
 	public int delete() throws DLException {
@@ -234,8 +240,9 @@ public class Project {
 	}
 
 	/**
-	 * Gets all the projects with faculty name
+	 * Gets all the projects with faculty last name
 	 *
+	 * @throws DLException if any MySQLDatabase methods errors
 	 * @return arraylist of all projects with faculty name
 	 */
 	public ArrayList<ArrayList<String>> getAllFullProjects() throws DLException {

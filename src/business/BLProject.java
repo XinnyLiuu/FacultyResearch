@@ -27,6 +27,7 @@ public class BLProject extends Project {
 	/**
 	 * Calls postNoId()
 	 *
+	 * @throws DLException if postNoId() fails
 	 * @return true - if insert worked, false - if otherwise
 	 */
 	public boolean doPostNoId() throws DLException {
@@ -40,6 +41,7 @@ public class BLProject extends Project {
 	/**
 	 * Calls putNoStudentId()
 	 *
+	 * @throws DLException if putNoStudentId() fails
 	 * @return true - if inserted, false - if otherwise
 	 */
 	public boolean doPutNoStudentId() throws DLException {
@@ -52,7 +54,8 @@ public class BLProject extends Project {
 
 	/**
 	 * Calls doDelete()
-	 *
+     *
+	 * @throws DLException if delete() fails
 	 * @return true - if deleted, false - if otherwise
 	 */
 	public boolean doDelete() throws DLException {
@@ -66,10 +69,10 @@ public class BLProject extends Project {
 	/**
 	 * Calls getAllFullProjects()
 	 *
-	 * @return 2D arraylist of all the
+	 * @throws DLException if getAllFullProjects() fails
+	 * @return 2D arraylist of all the projects and its relating faculty member's lastname
 	 */
 	public ArrayList<ArrayList<String>> doGetFullProjects() throws DLException {
-		ArrayList<ArrayList<String>> projects = getAllFullProjects();
-		return projects;
+		return getAllFullProjects();
 	}
 }

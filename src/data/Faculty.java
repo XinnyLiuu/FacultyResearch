@@ -47,6 +47,7 @@ public class Faculty {
 	/**
 	 * Retrieve the values from the db using the faculty's id and update other attributes
 	 *
+	 * @throws DLException if any MySQLDatabase methods errors
 	 * @return size of the data fetched
 	 */
 	public int get() throws DLException {
@@ -84,6 +85,7 @@ public class Faculty {
 	/**
 	 * Update the attributes in the db
 	 *
+	 * @throws DLException if any MySQLDatabase methods errors
 	 * @return num of rows affected
 	 */
 	public int put() throws DLException {
@@ -115,6 +117,7 @@ public class Faculty {
 	/**
 	 * Insert the attributes in the db
 	 *
+	 * @throws DLException if any MySQLDatabase methods errors
 	 * @return num of rows affected
 	 */
 	public int post() throws DLException {
@@ -146,6 +149,7 @@ public class Faculty {
 	/**
 	 * Delete a record in the database
 	 *
+	 * @throws DLException if any MySQLDatabase methods errors
 	 * @return num of rows deleted
 	 */
 	public int delete() throws DLException {
@@ -169,6 +173,7 @@ public class Faculty {
 	/**
 	 * Checks the faculty's id and password against the ones in the database
 	 *
+	 * @throws DLException if any MySQLDatabase methods errors
 	 * @return 1 - if the faculty exists based on the id and password given, 0 - if otherwise
 	 */
 	public int login() throws DLException {
@@ -200,6 +205,7 @@ public class Faculty {
 	/**
 	 * Gets all the faculty's projects
 	 *
+	 * @throws DLException if any MySQLDatabase methods errors
 	 * @return 2D arraylist of all projects associated with the faculty
 	 */
 	public ArrayList<ArrayList<String>> getAllMyProjects() throws DLException {
