@@ -327,7 +327,7 @@ public class FacultyResearch extends Application {
 	/**
 	 * Authenticates user
 	 *
-	 * @return userId
+	 * @return an array storing the user's id and password
 	 */
 	private String[] userAuthenticate() {
 		// Create the login dialog
@@ -429,6 +429,7 @@ public class FacultyResearch extends Application {
 	 * Prepares the table view of all the projects for PUBLIC
 	 *
 	 * @param tableView TableView object to be setup
+	 * @return the table object that has been setup
 	 */
 	private TableView setUpPublicTable(TableView tableView) {
 		// Create table view for all projects
@@ -460,6 +461,7 @@ public class FacultyResearch extends Application {
 	 *
 	 * @param tableView TableView object to be setup
 	 * @param student business layer object of the student whose table is to be setup
+	 * @return the table object that has been setup
 	 */
 	private TableView setUpStudentTable(TableView tableView, BLStudent student) {
 		// Create table view for all projects
@@ -487,6 +489,7 @@ public class FacultyResearch extends Application {
 	 *
 	 * @param tableView TableView object to be setup
 	 * @param student business layer for the student whose table is to be setup
+	 * @return the table object that has been setup
 	 */
 	private TableView setUpStudentDeptTable(TableView tableView, BLStudent student) {
 		// Create table view for all projects
@@ -514,6 +517,7 @@ public class FacultyResearch extends Application {
 	 *
 	 * @param tableView TableView object to be setup
 	 * @param faculty business layer faculty whose table is being prepared
+	 * @return the table object that has been setup
 	 */
 	private TableView setUpFacultyTable(TableView tableView, BLFaculty faculty) {
 		// Create table view for all projects
