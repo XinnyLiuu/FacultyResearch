@@ -14,7 +14,7 @@ public class MySQLDatabase {
 	private static final String URI = "jdbc:mysql://localhost/faculty_research?autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 	private static final String USER = "root";
-	private static final String PASSWORD = "password";
+	private static final String PASSWORD = "student";
 
 	private static final String DEFAULT_ERROR = "Failed to complete this operation at this time!";
 
